@@ -32,7 +32,7 @@ sub_power$Full_Date <- as.POSIXct(fulldate)
 ## Time to create a plot
 with(sub_power, {
         plot(Sub_metering_1~Full_Date, type="l",
-             ylab="Global Active Power (kilowatts)", xlab="")
+             ylab="Energy sub metering", xlab="")
         lines(Sub_metering_2~Full_Date, col='Red')
         lines(Sub_metering_3~Full_Date, col='Blue')
         legend("topright", col=c("black", "red", "blue"), lty=1, lwd=2, legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
