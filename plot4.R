@@ -30,14 +30,17 @@ fulldate <- paste(sub_power$Date, sub_power$Time)
 sub_power$Full_Date <- as.POSIXct(fulldate)
 
 ## Time to create a plot
+par(mfrow = c(2, 2), mar = c(4,4,2,1), oma = c(0,0,2,0))
 with(sub_power, {
+        plot(Global_active_power ~ Full_Date, type = "l", xlab = "", ylab = "Global Active Power (kilowatts)")
+        plot(Voltage ~ Full_Date, type = "l", xlab = "datetime", ylab = "Voltage")
         plot(Sub_metering_1~Full_Date, type="l", ylab="Energy sub metering", xlab="")
         lines(Sub_metering_2~Full_Date, col='Red')
         lines(Sub_metering_3~Full_Date, col='Blue')
-        legend("topright", col=c("black", "red", "blue"), lty=1, lwd=2, legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
-        plot()
+        legend("topright",col=c("black", "red", "blue"),lty=1,lwd=2,legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+        plot(Global_reactive_power ~ Full_Date, type = "l", xlab = "datetime")
 })
 
-## and save it to a png file
-dev.copy(png, file="plot3.png", height=480, width=480)
+## And finally save our png
+dev.copy(png, file="plot4.png", height=480, width=480)
 dev.off()
